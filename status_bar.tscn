@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://pnsu2y7wggp2"]
+
+[ext_resource type="Script" path="res://Scripts/System/Inventory/status_bar.gd" id="1_p7b8r"]
+
+[node name="StatusBar" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.009
+anchor_right = 0.995
+anchor_bottom = 0.037
+offset_left = -9.2
+offset_top = 0.280001
+offset_right = -0.400146
+offset_bottom = 0.0400009
+script = ExtResource("1_p7b8r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 400
+
+[node name="CashLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Cash: "
+
+[node name="CashAmount" type="Label" parent="HBoxContainer/CashLabel"]
+layout_mode = 2
+offset_left = 50.0
+offset_right = 182.0
+offset_bottom = 26.0
+text = "$999,999,999,999"
+
+[node name="Date" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "01/01/0001"
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Temperature" type="Label" parent="HBoxContainer/Panel"]
+layout_mode = 2
+anchor_bottom = 0.9
+offset_left = -19.0
+offset_top = 2.0
+offset_right = 67.0
+offset_bottom = 0.999998
+text = "100 F"
+
+[node name="Humidity" type="Label" parent="HBoxContainer/Panel"]
+layout_mode = 2
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = 2.0
+offset_right = 86.0
+offset_bottom = 2.0
+text = "50%"
+
+[node name="WeatherPattern" type="Label" parent="HBoxContainer/Panel"]
+layout_mode = 2
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = 1.0
+offset_right = 301.0
+offset_bottom = 1.0
+text = "Weather Pattern!"
+
+[node name="Season" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Winter"

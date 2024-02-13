@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cb7oqnatjivyv"]
+
+[ext_resource type="Script" path="res://Scripts/System/Items/ItemData.gd" id="1_e88ur"]
+
+[resource]
+script = ExtResource("1_e88ur")
+name = ""
+description = ""
+stackable = false
+compostable = false
+disposable = false
+sellable = false
+extractable = false
+purchase_price = 0
+sell_price = 0

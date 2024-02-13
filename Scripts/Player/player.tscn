@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvwenpp68jqwv"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_potsk"]
+[ext_resource type="Resource" uid="uid://cl6s0b0ii3emr" path="res://Scripts/Player/Inventory.tres" id="2_dlk20"]
+
+[node name="Player" type="Node"]
+script = ExtResource("1_potsk")
+inventory_data = ExtResource("2_dlk20")

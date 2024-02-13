@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://47ocate5t3l0"]
+
+[ext_resource type="Script" path="res://Scripts/System/Inventory/inventory_context_menu.gd" id="1_m63pm"]
+[ext_resource type="Texture2D" uid="uid://b67607li354om" path="res://Sprites/parchment.png" id="2_751cm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2tyr"]
+size = Vector2(212, 295)
+
+[node name="ContextMenu" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 187.0
+offset_bottom = 271.0
+script = ExtResource("1_m63pm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(96, 137.5)
+shape = SubResource("RectangleShape2D_g2tyr")
+
+[node name="Panel2" type="Panel" parent="Area2D"]
+offset_right = 187.0
+offset_bottom = 271.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Area2D/Panel2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+anchor_top = 0.192
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0320015
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Extract" type="Button" parent="Area2D/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Extract"
+
+[node name="Compost" type="Button" parent="Area2D/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Compost"
+
+[node name="Dispose" type="Button" parent="Area2D/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dispose"
+
+[node name="Sell" type="Button" parent="Area2D/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Sell"
+
+[node name="ItemLabel" type="Panel" parent="Area2D"]
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 179.0
+offset_bottom = 38.0
+
+[node name="TextureRect" type="TextureRect" parent="Area2D/ItemLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_751cm")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Area2D/ItemLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.022
+anchor_right = 0.977
+anchor_bottom = 0.889
+offset_left = 0.0209949
+offset_top = 3.002
+offset_right = -0.0210114
+offset_bottom = 2.992
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.286275, 0.14902, 0, 1)
+text = "Lorem Ipsum Doloret"
+horizontal_alignment = 1
+
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="Area2D/Panel2/VBoxContainer/Extract" to="." method="on_click_extract_button"]
+[connection signal="pressed" from="Area2D/Panel2/VBoxContainer/Compost" to="." method="on_click_compost_button"]
+[connection signal="pressed" from="Area2D/Panel2/VBoxContainer/Dispose" to="." method="on_click_dispose_button"]
+[connection signal="pressed" from="Area2D/Panel2/VBoxContainer/Sell" to="." method="on_click_sell_button"]

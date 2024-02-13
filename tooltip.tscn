@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm057b5xifn0"]
+
+[ext_resource type="Script" path="res://Scripts/System/Inventory/tooltip.gd" id="1_145d6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yfyuj"]
+
+[node name="Tooltip" type="PanelContainer"]
+offset_right = 216.0
+offset_bottom = 318.0
+size_flags_vertical = 3
+script = ExtResource("1_145d6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="ItemImage" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.014
+anchor_right = 0.463
+anchor_bottom = 0.316
+offset_left = -0.104
+offset_top = 0.108
+offset_right = -0.00800323
+offset_bottom = 0.071991
+texture = SubResource("PlaceholderTexture2D_yfyuj")
+
+[node name="ItemName" type="Label" parent="Panel"]
+layout_mode = 2
+anchor_left = 0.023
+anchor_top = 0.356
+anchor_right = 0.981
+anchor_bottom = 0.561
+offset_left = 0.0320001
+offset_top = 0.0319977
+offset_right = 1.10399
+offset_bottom = 0.0419922
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Item Name Goes Here
+Item Name Goes Here"
+autowrap_mode = 2
+
+[node name="Quantity" type="Label" parent="Panel"]
+layout_mode = 2
+anchor_left = 0.694
+anchor_top = 0.018
+anchor_right = 0.972
+anchor_bottom = 0.133
+offset_left = 0.095993
+offset_top = -0.00400019
+offset_right = 0.0479889
+offset_bottom = 0.026001
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x 999"
+horizontal_alignment = 2
+
+[node name="ItemInfo" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.583
+anchor_right = 0.981
+anchor_bottom = 0.982
+offset_left = 0.0319996
+offset_top = -0.0740051
+offset_right = 0.103989
+offset_bottom = 0.0039978
+text = "Description Goes Here
+Description Goes Here
+Wahoo
+Wahoo
+Wahooo"
+autowrap_mode = 2

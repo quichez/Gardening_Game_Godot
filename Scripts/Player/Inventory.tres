@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=12 format=3 uid="uid://cl6s0b0ii3emr"]
+
+[ext_resource type="Script" path="res://Scripts/System/Inventory/InventoryData.gd" id="1_y3ajj"]
+[ext_resource type="Resource" uid="uid://uthord4pcnw7" path="res://Resources/Seeds/MarigoldSeed.tres" id="2_5r0yh"]
+[ext_resource type="Script" path="res://Scripts/System/Inventory/InventorySlotData.gd" id="3_s8bab"]
+[ext_resource type="Resource" uid="uid://c65la7t7uc0bm" path="res://Resources/Tools/Spade.tres" id="4_g26j0"]
+[ext_resource type="Resource" uid="uid://yxyfyxbixujs" path="res://Resources/Flowers/Marigold.tres" id="5_jfmoh"]
+[ext_resource type="Resource" uid="uid://smf4tgnid17q" path="res://Resources/Seeds/LettuceSeed.tres" id="6_2is7g"]
+
+[sub_resource type="Resource" id="Resource_6b74e"]
+script = ExtResource("3_s8bab")
+item_data = ExtResource("2_5r0yh")
+quantity = 998
+
+[sub_resource type="Resource" id="Resource_lnv74"]
+script = ExtResource("3_s8bab")
+item_data = ExtResource("4_g26j0")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_8a7is"]
+script = ExtResource("3_s8bab")
+item_data = ExtResource("2_5r0yh")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_urjar"]
+script = ExtResource("3_s8bab")
+item_data = ExtResource("5_jfmoh")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_fx0vp"]
+script = ExtResource("3_s8bab")
+item_data = ExtResource("6_2is7g")
+quantity = 20
+
+[resource]
+script = ExtResource("1_y3ajj")
+slot_datas = Array[ExtResource("3_s8bab")]([SubResource("Resource_6b74e"), SubResource("Resource_lnv74"), SubResource("Resource_8a7is"), SubResource("Resource_urjar"), SubResource("Resource_fx0vp"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

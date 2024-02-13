@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://smf4tgnid17q"]
+
+[ext_resource type="Script" path="res://Scripts/System/Items/ItemData.gd" id="1_rcuqx"]
+[ext_resource type="Texture2D" uid="uid://ceh6e4aldhpe" path="res://Sprites/seeds_atlas.png" id="2_sbdg5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cppol"]
+atlas = ExtResource("2_sbdg5")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_rcuqx")
+name = "Lettuce Seed"
+description = "Seeds to grow leafy lettuce plants."
+stackable = true
+compostable = false
+disposable = true
+sellable = true
+extractable = false
+texture = SubResource("AtlasTexture_cppol")
+purchase_price = 0
+sell_price = 0

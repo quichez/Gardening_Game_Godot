@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://c65la7t7uc0bm"]
+
+[ext_resource type="Script" path="res://Scripts/System/Items/ItemData.gd" id="1_vpybh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f4hya"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-9be307e46f7f077cba74cfaeecc0b960.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lujnn"]
+atlas = SubResource("CompressedTexture2D_f4hya")
+region = Rect2(96, 320, 32, 32)
+
+[resource]
+script = ExtResource("1_vpybh")
+name = "Spade"
+description = "A handy spade to dig with."
+stackable = false
+compostable = false
+disposable = true
+sellable = true
+extractable = false
+texture = SubResource("AtlasTexture_lujnn")
+purchase_price = 10
+sell_price = 5

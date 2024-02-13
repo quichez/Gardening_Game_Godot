@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://cngjnct58po34"]
+
+[ext_resource type="PackedScene" uid="uid://br3bkhotiotwq" path="res://inventory.tscn" id="1_sgwn6"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_xxk6x"]
+[ext_resource type="PackedScene" uid="uid://bvwenpp68jqwv" path="res://Scripts/Player/player.tscn" id="2_i7rgf"]
+[ext_resource type="Script" path="res://Scripts/System/Inventory/inventory_interface.gd" id="3_0vtht"]
+[ext_resource type="PackedScene" uid="uid://dphapx43pip0p" path="res://Scripts/System/Inventory/inventory_slot.tscn" id="5_dr6y3"]
+[ext_resource type="PackedScene" uid="uid://bm057b5xifn0" path="res://tooltip.tscn" id="6_ii51b"]
+[ext_resource type="PackedScene" uid="uid://47ocate5t3l0" path="res://Scripts/System/Inventory/context_menu.tscn" id="7_fhels"]
+[ext_resource type="Script" path="res://Scripts/System/Weather/weather_system.gd" id="8_8q4hh"]
+[ext_resource type="PackedScene" uid="uid://pnsu2y7wggp2" path="res://status_bar.tscn" id="8_e6p01"]
+[ext_resource type="Script" path="res://Scripts/System/Time/calendar.gd" id="9_7xnte"]
+[ext_resource type="PackedScene" uid="uid://djlxx7enaq0is" path="res://climate_information.tscn" id="9_8gqh4"]
+[ext_resource type="Resource" uid="uid://6iiefufpg33q" path="res://Resources/Climes/Florida.tres" id="10_v86qv"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xxk6x")
+
+[node name="Player" parent="." instance=ExtResource("2_i7rgf")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_0vtht")
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("1_sgwn6")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 60.0
+offset_bottom = 90.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("5_dr6y3")]
+visible = false
+modulate = Color(1, 1, 1, 0.462745)
+layout_mode = 0
+offset_left = 732.0
+offset_top = 371.0
+offset_right = 782.0
+offset_bottom = 421.0
+
+[node name="Tooltip" parent="UI/InventoryInterface" instance=ExtResource("6_ii51b")]
+visible = false
+layout_mode = 0
+
+[node name="ContextMenu" parent="UI/InventoryInterface" instance=ExtResource("7_fhels")]
+visible = false
+layout_mode = 0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="StatusBar" parent="UI" instance=ExtResource("8_e6p01")]
+anchor_right = 0.987
+offset_right = 14.96
+
+[node name="ClimateInformation" parent="UI" instance=ExtResource("9_8gqh4")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.734
+anchor_top = 0.047
+anchor_right = 0.994
+anchor_bottom = 0.325
+offset_left = -0.280029
+offset_top = 0.239998
+offset_right = 0.52002
+offset_bottom = -3.05176e-05
+
+[node name="Weather" type="Node" parent="."]
+script = ExtResource("8_8q4hh")
+selected_climate = ExtResource("10_v86qv")
+temperature = 60
+humidity = 50
+
+[node name="Time" type="Node" parent="."]
+script = ExtResource("9_7xnte")
+length_of_day = 240
+increments_in_minutes = 15
+date_with_day_first = false
+start_day = 1
+start_month = 3
+start_year = 2000
+
+[node name="Timer" type="Timer" parent="Time"]

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ClimateData" load_steps=7 format=3 uid="uid://6iiefufpg33q"]
+
+[ext_resource type="Script" path="res://Scripts/System/Weather/ClimateData.gd" id="1_belk0"]
+[ext_resource type="Script" path="res://Scripts/System/Weather/season.gd" id="2_i3o7k"]
+
+[sub_resource type="Resource" id="Resource_i74rm"]
+script = ExtResource("2_i3o7k")
+season_name = "Florida Winter"
+daily_temperature_range = Vector2(60, 70)
+daily_humidity_range = Vector2(20, 60)
+heat_waves = false
+cold_snaps = false
+rain_storms = false
+droughts = true
+daily_chance_to_occur = 0.05
+
+[sub_resource type="Resource" id="Resource_mfyk7"]
+script = ExtResource("2_i3o7k")
+season_name = "Florida Spring"
+daily_temperature_range = Vector2(70, 85)
+daily_humidity_range = Vector2(40, 70)
+heat_waves = false
+cold_snaps = false
+rain_storms = true
+droughts = false
+daily_chance_to_occur = 0.3
+
+[sub_resource type="Resource" id="Resource_bl7tm"]
+script = ExtResource("2_i3o7k")
+season_name = "Florida Summer"
+daily_temperature_range = Vector2(90, 100)
+daily_humidity_range = Vector2(60, 100)
+heat_waves = true
+cold_snaps = false
+rain_storms = true
+droughts = false
+daily_chance_to_occur = 0.15
+
+[sub_resource type="Resource" id="Resource_2ltu2"]
+script = ExtResource("2_i3o7k")
+season_name = "Florida Fall"
+daily_temperature_range = Vector2(80, 90)
+daily_humidity_range = Vector2(50, 70)
+heat_waves = false
+cold_snaps = false
+rain_storms = true
+droughts = false
+daily_chance_to_occur = 0.05
+
+[resource]
+script = ExtResource("1_belk0")
+climate_name = "[b]Florida[/b]"
+seasons = Array[ExtResource("2_i3o7k")]([SubResource("Resource_i74rm"), SubResource("Resource_mfyk7"), SubResource("Resource_bl7tm"), SubResource("Resource_2ltu2")])
+info_file = "Florida.txt"

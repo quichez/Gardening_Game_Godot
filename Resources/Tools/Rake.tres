@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dv1qkr2w0it5t"]
+
+[ext_resource type="Script" path="res://Scripts/System/Items/ItemData.gd" id="1_d4pia"]
+
+[resource]
+script = ExtResource("1_d4pia")
+name = ""
+description = ""
+stackable = false
+compostable = false
+disposable = false
+sellable = false
+extractable = false
+purchase_price = 0
+sell_price = 0
