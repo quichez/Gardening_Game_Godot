@@ -11,6 +11,13 @@ extends Node
 @onready var humidity: Label = $HBoxContainer/Panel/Humidity
 @onready var season: Label = $HBoxContainer/Season
 @onready var weather_pattern: Label = $HBoxContainer/Panel/WeatherPattern
+	
+func _ready() -> void:
+	player.cash_updated.connect(update_cash_string)
+	time.date_updated.connect(update_time_string)
+	weather.weather_updated.connect(update_weather_string)
+	weather.weather_pattern_updated.connect(update_weather_pattern_string)
+	update_weather_pattern_string("")
 
 func update_time_string(date_input : String) -> void:
 	date.text = date_input
@@ -25,14 +32,3 @@ func update_weather_string(_temperature: int, _humidity: int, _season : String) 
 	
 func update_weather_pattern_string(string: String) -> void:
 	weather_pattern.text = string
-	
-func _ready() -> void:
-	player.cash_updated.connect(update_cash_string)
-	time.date_updated.connect(update_time_string)
-	weather.weather_updated.connect(update_weather_string)
-	weather.weather_pattern_updated.connect(update_weather_pattern_string)
-	
-	update_weather_pattern_string("")
-	
-func _process(_delta: float) -> void:
-	pass

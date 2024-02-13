@@ -15,17 +15,21 @@ signal date_updated(date : String)
 signal weather_update
 
 var date : Date = Date.new()
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+	
+func initialize_time() -> void:
 	date.set_date_with_ints(start_day, start_month, start_year)
 	timer.autostart = true
 	timer.wait_time = length_of_day / (4.0*24.0)
-	timer.connect("timeout",increment_time)
-	#timer.start()
 
-	#date_updated.emit(date.get_date_as_string(date_with_day_first))
+	date_updated.emit(date.get_date_as_string(date_with_day_first))
 	
+func set_current_time(_date: Date) -> void:
+	date = _date
+	date_updated.emit(date.get_date_as_string(date_with_day_first))
+
 func increment_time() -> void:
 	date.increment(increments_in_minutes)
-	#date_updated.emit(date.get_date_as_string(date_with_day_first))
+	print(date.get_time_as_string(false))
+
+func get_date() -> Date:
+	return date

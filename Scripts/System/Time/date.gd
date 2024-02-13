@@ -27,6 +27,8 @@ func set_date(date: Date) -> void:
 	day = date.day
 	month = date.month
 	year = date.year
+	hour = date.hour
+	minute = date.minute
 	
 	julian_day = (month-1) * 30 + day
 	

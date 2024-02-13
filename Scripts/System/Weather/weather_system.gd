@@ -22,15 +22,8 @@ var full_forecast : Array[WeatherData]
 
 signal weather_updated(temperature: int, humidity: int, season: String)
 signal weather_pattern_updated(pattern: String)
-
-func _ready() -> void:
-	initialize_forecast()
-	set_weather()
-	#time.weather_update.connect(set_weather)
-	#time.date.day_updated.connect(check_for_weather_pattern)
 	
-#Pending Removal
-func set_weather() -> void:
+func set_current_weather() -> void:
 	season = full_forecast[0].season
 	temperature = full_forecast[0].temperature
 	humidity = full_forecast[0].humidity
@@ -110,7 +103,7 @@ func set_weather_data() -> WeatherData:
 	var random_mod_humid = rng.randi_range(-3,3)
 
 	#Set the weather data
-	weather_data.date = time.date
+	weather_data.date.set_date(time.date)
 	weather_data.season = selected_climate.get_season_by_index(season_index)
 	
 	weather_data.temperature = weather_data.season.get_temperature_from_range(daytime_mod,temperature_mod + weather_pattern_temp_mod)
@@ -127,12 +120,14 @@ func set_weather_pattern_data() -> Array[bool]:
 	
 func initialize_forecast() -> void:
 	var forecast_count = 14 * 24 * (60 / time.increments_in_minutes)
-	full_forecast.resize(forecast_count)
-	
-	for i in forecast_count:
+	full_forecast.resize(forecast_count+1)
+	for i in range(forecast_count+1):
 		full_forecast[i] = set_weather_data()
 		time.increment_time()
 
 func increment_forecast() -> void:
-	full_forecast.pop_front()
+	full_forecast.remove_at(0)
 	full_forecast.append(set_weather_data())
+	print(full_forecast[0].date.get_date_as_string(false))
+	#print(full_forecast[100].date.get_date_as_string(false))
+	pass
