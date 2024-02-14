@@ -24,7 +24,6 @@ signal weather_updated(temperature: int, humidity: int, season: String)
 signal weather_pattern_updated(pattern: String)
 	
 func set_current_weather() -> void:
-	season = full_forecast[0].season
 	temperature = full_forecast[0].temperature
 	humidity = full_forecast[0].humidity
 	
@@ -97,6 +96,7 @@ func set_weather_data() -> WeatherData:
 	
 	#Get current season index
 	var season_index = selected_climate.get_season_index(pct_of_year)
+	season = selected_climate.get_season_by_index(season_index)
 	
 	#Set random modifier to temperature and humidity
 	temperature_mod += rng.randf_range(-0.01, 0.01)
@@ -104,10 +104,9 @@ func set_weather_data() -> WeatherData:
 
 	#Set the weather data
 	weather_data.date.set_date(time.date)
-	weather_data.season = selected_climate.get_season_by_index(season_index)
 	
-	weather_data.temperature = weather_data.season.get_temperature_from_range(daytime_mod,temperature_mod + weather_pattern_temp_mod)
-	weather_data.humidity = weather_data.season.get_humidity_from_range(daytime_mod,random_mod_humid + weather_pattern_humid_mod)
+	weather_data.temperature = season.get_temperature_from_range(daytime_mod,temperature_mod + weather_pattern_temp_mod)
+	weather_data.humidity = season.get_humidity_from_range(daytime_mod,random_mod_humid + weather_pattern_humid_mod)
 	weather_data.cloud_cover = 50
 	
 	#Set weather patterns 
@@ -124,10 +123,12 @@ func initialize_forecast() -> void:
 	for i in range(forecast_count+1):
 		full_forecast[i] = set_weather_data()
 		time.increment_time()
-
+	#print(full_forecast[-1].date.get_date_as_string(false))
+	
 func increment_forecast() -> void:
 	full_forecast.remove_at(0)
 	full_forecast.append(set_weather_data())
+	time.increment_time()
 	pass
 
 func get_forecast(level: int) -> Array[WeatherData]:

@@ -1,7 +1,6 @@
 class_name WeatherData
 
 var date : Date = Date.new()
-var season : Season
 
 var temperature : int
 var humidity : int

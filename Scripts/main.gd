@@ -17,7 +17,7 @@ func _ready() -> void:
 	weather.initialize_forecast()
 	weather.set_current_weather()
 	
-	time.set_current_time(weather.full_forecast[0].date)
+	#time.set_current_time(weather.full_forecast[0].date)
 	
 	time.timer.connect("timeout",_increment)
 	time.timer.start()

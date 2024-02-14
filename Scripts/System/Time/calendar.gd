@@ -29,7 +29,7 @@ func set_current_time(_date: Date) -> void:
 
 func increment_time() -> void:
 	date.increment(increments_in_minutes)
-	print(date.get_time_as_string(false))
+	print(date.get_date_as_string(false))
 
 func get_date() -> Date:
 	return date
