@@ -128,6 +128,31 @@ func initialize_forecast() -> void:
 func increment_forecast() -> void:
 	full_forecast.remove_at(0)
 	full_forecast.append(set_weather_data())
-	print(full_forecast[0].date.get_date_as_string(false))
-	#print(full_forecast[100].date.get_date_as_string(false))
 	pass
+
+func get_forecast(level: int) -> Array[WeatherData]:
+	var interval : int
+	var forecast : Array[WeatherData]
+	var forecast_count : int
+	
+	match level:
+		1:
+			forecast_count = 12
+			interval = 60 / time.interval_in_minutes
+		2:
+			forecast_count = 12
+			interval = 60 / time.interval_in_minutes * 2
+		3:
+			forecast_count = 7
+			interval = 60 / time.interval_in_minutes * 24
+		4:
+			forecast_count = 14
+			interval = 60 / time.interval_in_minutes * 24
+		_:
+			push_error("Level needs to be 1 to 4")
+		
+	for i in forecast_count+1:
+		forecast[i] = full_forecast[i*interval]
+			
+	return forecast
+			

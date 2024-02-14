@@ -25,12 +25,12 @@ func _ready() -> void:
 	player.add_to_cash(0)
 	
 func _increment() -> void:
-	print("game incremented")
 	weather.increment_forecast()
 	weather.set_current_weather()
 	time.set_current_time(weather.full_forecast[0].date)
 	
 	pass
+	
 func toggle_inventory_interface() -> void:
 	inventory_interface.visible = not inventory_interface.visible
 
