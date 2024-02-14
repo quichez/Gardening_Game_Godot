@@ -103,7 +103,6 @@ func set_weather_data() -> WeatherData:
 	var random_mod_humid = rng.randi_range(-3,3)
 
 	#Set the weather data
-	print(time.date.get_date_as_string(false))
 	weather_data.date.set_date(time.date)
 	
 	weather_data.temperature = season.get_temperature_from_range(daytime_mod,temperature_mod + weather_pattern_temp_mod)
@@ -156,4 +155,3 @@ func get_forecast(level: int) -> Array[WeatherData]:
 		forecast[i] = full_forecast[i*interval]
 			
 	return forecast
-			

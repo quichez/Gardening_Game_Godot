@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://do78njsmo4s0h"]
+
+[ext_resource type="Script" path="res://Scripts/System/Weather/forecast_info_panel.gd" id="1_88nxk"]
+
+[node name="ForecastInfoPanel" type="Panel"]
+custom_minimum_size = Vector2(50, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_88nxk")
+
+[node name="Date" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.287
+offset_bottom = 0.0400009
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 13
+text = "MM/DD"
+
+[node name="Temperature" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.487
+offset_bottom = 0.0399971
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 13
+text = "50F"
+horizontal_alignment = 1
+
+[node name="Humidity" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.375
+anchor_right = 1.0
+anchor_bottom = 0.662
+offset_bottom = 0.0399933
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 13
+text = "50%"
+horizontal_alignment = 1
+
+[node name="Cloudy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.537
+anchor_right = 1.0
+anchor_bottom = 0.825
+offset_top = 0.0400009
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 13
+text = "P. Cl"
+horizontal_alignment = 1

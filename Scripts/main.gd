@@ -5,6 +5,7 @@ extends Node2D
 @onready var player = $Player
 @onready var inventory_interface = $UI/InventoryInterface
 @onready var climate_information: PanelContainer = $UI/ClimateInformation
+@onready var forecast_panel: PanelContainer = $UI/ForecastPanel
 
 func _ready() -> void:
 	initialize_inventory_interface()

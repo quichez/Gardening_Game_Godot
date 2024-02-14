@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cngjnct58po34"]
+[gd_scene load_steps=14 format=3 uid="uid://cngjnct58po34"]
 
 [ext_resource type="PackedScene" uid="uid://br3bkhotiotwq" path="res://inventory.tscn" id="1_sgwn6"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xxk6x"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Time/calendar.gd" id="9_7xnte"]
 [ext_resource type="PackedScene" uid="uid://djlxx7enaq0is" path="res://climate_information.tscn" id="9_8gqh4"]
 [ext_resource type="Resource" uid="uid://6iiefufpg33q" path="res://Resources/Climes/Florida.tres" id="10_v86qv"]
+[ext_resource type="PackedScene" uid="uid://cc02hlf1gmmjw" path="res://forecast_panel.tscn" id="10_x78xh"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xxk6x")
@@ -71,6 +72,12 @@ offset_top = 0.239998
 offset_right = 0.52002
 offset_bottom = -3.05176e-05
 
+[node name="ForecastPanel" parent="UI" instance=ExtResource("10_x78xh")]
+offset_left = 918.0
+offset_top = 48.0
+offset_right = 917.36
+offset_bottom = 56.08
+
 [node name="Weather" type="Node" parent="."]
 script = ExtResource("8_8q4hh")
 selected_climate = ExtResource("10_v86qv")
@@ -79,7 +86,7 @@ humidity = 50
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource("9_7xnte")
-length_of_day = 2
+length_of_day = 240
 increments_in_minutes = 15
 date_with_day_first = false
 start_day = 1
