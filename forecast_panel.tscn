@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc02hlf1gmmjw"]
+[gd_scene load_steps=2 format=3 uid="uid://cc02hlf1gmmjw"]
 
 [ext_resource type="Script" path="res://Scripts/System/Weather/forecast_panel.gd" id="1_dy1hs"]
-[ext_resource type="PackedScene" uid="uid://do78njsmo4s0h" path="res://forecast_info_panel.tscn" id="2_qbvap"]
 
 [node name="ForecastPanel" type="PanelContainer"]
 anchors_preset = -1
@@ -18,24 +17,3 @@ vertical_scroll_mode = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 1
-
-[node name="ForecastInfoPanel" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2
-
-[node name="ForecastInfoPanel2" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2
-
-[node name="ForecastInfoPanel3" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2
-
-[node name="ForecastInfoPanel4" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2
-
-[node name="ForecastInfoPanel5" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2
-
-[node name="ForecastInfoPanel6" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2
-
-[node name="ForecastInfoPanel7" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_qbvap")]
-layout_mode = 2

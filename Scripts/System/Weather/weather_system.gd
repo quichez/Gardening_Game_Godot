@@ -138,20 +138,22 @@ func get_forecast(level: int) -> Array[WeatherData]:
 	match level:
 		1:
 			forecast_count = 12
-			interval = 60 / time.interval_in_minutes
+			interval = 60 / time.increments_in_minutes
 		2:
 			forecast_count = 12
-			interval = 60 / time.interval_in_minutes * 2
+			interval = 60 / time.increments_in_minutes * 2
 		3:
 			forecast_count = 7
-			interval = 60 / time.interval_in_minutes * 24
+			interval = 60 / time.increments_in_minutes * 24
 		4:
 			forecast_count = 14
-			interval = 60 / time.interval_in_minutes * 24
+			interval = 60 / time.increments_in_minutes * 24
 		_:
 			push_error("Level needs to be 1 to 4")
-		
-	for i in forecast_count+1:
-		forecast[i] = full_forecast[i*interval]
+	
+	forecast.resize(forecast_count)
+	for i in forecast_count:
+		print(i)
+		forecast[i] = full_forecast[(i+1)*interval]
 			
 	return forecast

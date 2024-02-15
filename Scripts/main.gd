@@ -13,6 +13,7 @@ func _ready() -> void:
 	time.initialize_time()
 	weather.initialize_forecast()
 	weather.set_current_weather()
+	forecast_panel.set_forecast_panel(weather.get_forecast(1),1)
 	initialize_time_timer()
 	
 	#time.set_current_time(weather.full_forecast[0].date)
@@ -23,7 +24,8 @@ func _increment() -> void:
 	weather.increment_forecast()
 	weather.set_current_weather()
 	time.set_current_time(weather.full_forecast[0].date)
-	pass
+	
+	forecast_panel.set_forecast_panel(weather.get_forecast(1),1)
 	
 func initialize_inventory_interface () -> void:
 	inventory_interface.set_player_inventory_data(player.inventory_data)

@@ -14,7 +14,7 @@ extends Node
 	
 func _ready() -> void:
 	player.cash_updated.connect(update_cash_string)
-	time.date_updated.connect(update_time_string)
+	time.current_date_updated.connect(update_time_string)
 	weather.weather_updated.connect(update_weather_string)
 	weather.weather_pattern_updated.connect(update_weather_pattern_string)
 	update_weather_pattern_string("")

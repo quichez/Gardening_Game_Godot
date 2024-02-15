@@ -45,6 +45,12 @@ func get_date_as_string(day_first: bool, twentyfour_hour : bool = false) -> Stri
 	else:
 		return  str(month) + "/" + str(day) + "/" +"%04d" % year + " \t" + get_time_as_string(twentyfour_hour)
 
+func get_day_month_as_string(day_first: bool) -> String:
+	if day_first:
+		return str(day) + "/" + str(month)
+	else:
+		return str(month) + "/" + str(day)
+		
 func get_time_as_string(twentyfour_hour : bool):
 	if twentyfour_hour:
 		return str(hour) + ":" + "%02d" % minute
