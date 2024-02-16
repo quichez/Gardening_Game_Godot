@@ -4,8 +4,8 @@ extends Node
 
 @export var selected_climate : ClimateData
 
-@export var temperature : int
-@export_range(0,100) var humidity: int
+var temperature : int
+var humidity: int
 var temperature_mod : float
 
 var rng = RandomNumberGenerator.new()
@@ -117,13 +117,15 @@ func set_weather_data() -> WeatherData:
 func set_weather_pattern_data() -> Array[bool]:
 	return [false, false, false, false]
 	
+##This method calls time.increment_time(), which can be refactored out if possible
 func initialize_forecast() -> void:
 	var forecast_count = 14 * 24 * (60 / time.increments_in_minutes)
 	full_forecast.resize(forecast_count+1)
 	for i in range(forecast_count+1):
 		full_forecast[i] = set_weather_data()
 		time.increment_time()
-	
+
+##This method calls time.increment_time(), which can be refactored out if possible
 func increment_forecast() -> void:
 	full_forecast.remove_at(0)
 	full_forecast.append(set_weather_data())
@@ -153,7 +155,13 @@ func get_forecast(level: int) -> Array[WeatherData]:
 	
 	forecast.resize(forecast_count)
 	for i in forecast_count:
-		print(i)
 		forecast[i] = full_forecast[(i+1)*interval]
 			
 	return forecast
+
+func get_forecast_estimate(forecast: Array[WeatherData]) -> Array[WeatherData]:
+	var forecast_estimate : Array[WeatherData] = forecast
+	for i in forecast.size():
+		forecast_estimate[i].weather_patterns_active[0] = true
+		
+	return forecast_estimate

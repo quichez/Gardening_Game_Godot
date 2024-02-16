@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Weather/forecast_info_panel.gd" id="1_88nxk"]
 
 [node name="ForecastInfoPanel" type="Panel"]
-custom_minimum_size = Vector2(50, 80)
+custom_minimum_size = Vector2(60, 80)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_88nxk")
@@ -17,6 +17,7 @@ offset_bottom = 0.0400009
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 13
 text = "MM/DD"
+horizontal_alignment = 1
 
 [node name="Temperature" type="Label" parent="."]
 layout_mode = 1
