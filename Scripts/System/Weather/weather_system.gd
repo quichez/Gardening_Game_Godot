@@ -18,7 +18,10 @@ var heat_wave_active : bool
 var cold_snap_active : bool
 var rain_storm_active : bool
 var drought_active : bool
+
+#Forecast System
 var full_forecast : Array[WeatherData]
+
 
 signal weather_updated(temperature: int, humidity: int, season: String)
 signal weather_pattern_updated(pattern: String)
@@ -131,33 +134,6 @@ func increment_forecast() -> void:
 	full_forecast.append(set_weather_data())
 	time.increment_time()
 	pass
-
-func get_forecast(level: int) -> Array[WeatherData]:
-	var interval : int
-	var forecast : Array[WeatherData]
-	var forecast_count : int
-	
-	match level:
-		1:
-			forecast_count = 12
-			interval = 60 / time.increments_in_minutes
-		2:
-			forecast_count = 12
-			interval = 60 / time.increments_in_minutes * 2
-		3:
-			forecast_count = 7
-			interval = 60 / time.increments_in_minutes * 24
-		4:
-			forecast_count = 14
-			interval = 60 / time.increments_in_minutes * 24
-		_:
-			push_error("Level needs to be 1 to 4")
-	
-	forecast.resize(forecast_count)
-	for i in forecast_count:
-		forecast[i] = full_forecast[(i+1)*interval]
-			
-	return forecast
 
 func get_forecast_estimate(forecast: Array[WeatherData]) -> Array[WeatherData]:
 	var forecast_estimate : Array[WeatherData] = forecast

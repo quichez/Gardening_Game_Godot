@@ -13,6 +13,8 @@ func get_season_by_index(index: int) -> Season:
 	return seasons[index]
 
 func get_info_file() -> String:
+	if not info_file:
+		push_error("ClimateData has no valid Info File")
 	var f = FileAccess.open(info_file,FileAccess.READ)
 	var content = ""
 	if f:

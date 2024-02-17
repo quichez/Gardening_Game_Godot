@@ -24,7 +24,7 @@ func _ready() -> void:
 	initialize_time_timer()
 	
 	#Set forecast panel (after time and weather is initialized)
-	set_forecast_panel(forecast_detail_level)
+	set_forecast_panel()
 	
 	#Initialize cash
 	player.add_to_cash(0)
@@ -36,7 +36,7 @@ func _increment() -> void:
 	time.set_current_time(weather.full_forecast[0].date)
 	
 	#Set the forecast panel
-	set_forecast_panel(forecast_detail_level)
+	set_forecast_panel(true)
 	
 	
 func initialize_inventory_interface () -> void:
@@ -55,21 +55,11 @@ func initialize_time_timer() -> void:
 	time.timer.connect("timeout",_increment)
 	time.timer.start()
 
-func set_forecast_panel(level : int) -> void:
-	print(level, forecast_detail_counter)
-	if level == 1 && forecast_detail_counter % 4 == 0:
-		forecast_panel.set_forecast_panel(weather.get_forecast(level),level)
-	elif level == 2 && forecast_detail_counter % 8 == 0:
-		forecast_panel.set_forecast_panel(weather.get_forecast(level),level)
-	elif (level == 3 || level == 4) && forecast_detail_counter % 96 == 0:
-		forecast_panel.set_forecast_panel(weather.get_forecast(level),level)
-	forecast_detail_counter += 1
-	
-	if forecast_detail_counter == 96:
-		forecast_detail_counter = 0
-	
-func change_forecast_panel_detail_level(level: int) -> void:	
-	set_forecast_panel(level)
+func set_forecast_panel(update_counter: bool = false) -> void:
+	forecast_panel.set_forecast_panel(weather.full_forecast,update_counter)
+		
+func change_forecast_panel_detail_level() -> void:	
+	set_forecast_panel()
 	
 func toggle_inventory_interface() -> void:
 	inventory_interface.visible = not inventory_interface.visible

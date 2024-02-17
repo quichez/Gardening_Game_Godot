@@ -55,4 +55,4 @@ cold_snap_weight = null
 script = ExtResource("1_belk0")
 climate_name = "[b]Florida[/b]"
 seasons = Array[ExtResource("2_i3o7k")]([SubResource("Resource_i74rm"), SubResource("Resource_mfyk7"), SubResource("Resource_bl7tm"), SubResource("Resource_2ltu2")])
-info_file = "Florida.txt"
+info_file = "res://Resources/Climes/info/Florida.txt"
