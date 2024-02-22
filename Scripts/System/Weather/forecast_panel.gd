@@ -46,9 +46,6 @@ func on_change_forecast_pressed() -> void:
 	
 func get_forecast(full_forecast : Array[WeatherData],update_counter: bool) -> Array[WeatherData]:
 	var interval : int = 60 / time.increments_in_minutes
-	var forecast : Array[WeatherData]
-	var forecast_count : int
-	
 	
 	if not (forecast_level_one && forecast_level_two && forecast_level_three && forecast_level_four):
 		forecast_level_one = set_forecast(full_forecast,12,interval)

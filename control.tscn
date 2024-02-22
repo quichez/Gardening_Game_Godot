@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Time/calendar.gd" id="9_7xnte"]
 [ext_resource type="PackedScene" uid="uid://djlxx7enaq0is" path="res://climate_information.tscn" id="9_8gqh4"]
 [ext_resource type="PackedScene" uid="uid://cc02hlf1gmmjw" path="res://forecast_panel.tscn" id="10_x78xh"]
-[ext_resource type="Resource" uid="uid://y5m3ftmcqwix" path="res://Resources/Climes/Subtropical.tres" id="12_1r2iw"]
+[ext_resource type="Resource" uid="uid://6iiefufpg33q" path="res://Resources/Climes/Florida.tres" id="12_dwy1i"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xxk6x")
@@ -82,7 +82,7 @@ offset_bottom = 56.08
 
 [node name="Weather" type="Node" parent="."]
 script = ExtResource("8_8q4hh")
-selected_climate = ExtResource("12_1r2iw")
+selected_climate = ExtResource("12_dwy1i")
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource("9_7xnte")

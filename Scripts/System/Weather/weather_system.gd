@@ -3,17 +3,17 @@ extends Node
 @onready var time: Node = $"../Time"
 
 @export var selected_climate : ClimateData
+var rng = RandomNumberGenerator.new()
 
+#Current Weather
 var temperature : int
 var humidity: int
 var temperature_mod : float
-
-var rng = RandomNumberGenerator.new()
-
 var season : Season
 
 var weather_pattern_temp_mod : int
 var weather_pattern_humid_mod : int
+
 var heat_wave_active : bool
 var cold_snap_active : bool
 var rain_storm_active : bool
@@ -29,6 +29,7 @@ signal weather_pattern_updated(pattern: String)
 func set_current_weather() -> void:
 	temperature = full_forecast[0].temperature
 	humidity = full_forecast[0].humidity
+	season = full_forecast[0].season
 	
 	weather_updated.emit(temperature, humidity, season.season_name)
 
@@ -99,7 +100,7 @@ func set_weather_data() -> WeatherData:
 	
 	#Get current season index
 	var season_index = selected_climate.get_season_index(pct_of_year)
-	season = selected_climate.get_season_by_index(season_index)
+	weather_data.season = selected_climate.get_season_by_index(season_index)
 	
 	#Set random modifier to temperature and humidity
 	temperature_mod += rng.randf_range(-0.01, 0.01)
@@ -108,16 +109,55 @@ func set_weather_data() -> WeatherData:
 	#Set the weather data
 	weather_data.date.set_date(time.date)
 	
-	weather_data.temperature = season.get_temperature_from_range(daytime_mod,temperature_mod + weather_pattern_temp_mod)
-	weather_data.humidity = season.get_humidity_from_range(daytime_mod,random_mod_humid + weather_pattern_humid_mod)
+	weather_data.temperature = weather_data.season.get_temperature_from_range(daytime_mod,temperature_mod + weather_pattern_temp_mod)
+	weather_data.humidity = weather_data.season.get_humidity_from_range(daytime_mod,random_mod_humid + weather_pattern_humid_mod)
 	weather_data.cloud_cover = 50
-	
-	#Set weather patterns 
-	weather_data.weather_patterns_active = [false, false, false, false]
 	
 	return weather_data
 	
-func set_weather_pattern_data() -> Array[bool]:
+func set_weather_pattern_data(curr_data : WeatherData, prev_data : WeatherData = null) -> Array[bool]:
+	var hw : float = rng.randf()
+	var cs : float = rng.randf()
+	var rs : float = rng.randf()
+	var dt : float = rng.randf()
+	var bool_array = [false,false,false,false]
+	
+	if not prev_data:
+		return [false,false,false,false]
+		
+	if prev_data.weather_patterns_active[0] && not prev_data.weather_patterns_active[1]:
+		bool_array[0] = hw < curr_data.season.heat_wave_weight * 99
+	else:
+		bool_array[0] = hw < curr_data.season.heat_wave_weight
+	if bool_array[0]:
+		curr_data.weather_pattern_counter[0] += 1
+	else:
+		curr_data.weather_pattern_counter[0] = 0
+		
+	if prev_data.weather_patterns_active[1] && not prev_data.weather_patterns_active[0]:
+		bool_array[1] = cs < curr_data.season.heat_wave_weight * 99
+	else:
+		bool_array[1] = cs < curr_data.season.heat_wave_weight
+	if bool_array[1]:
+		curr_data.weather_pattern_counter[1] += 1
+	else:
+		curr_data.weather_pattern_counter[1] = 0
+		
+	if prev_data.weather_patterns_active[2] && not prev_data.weather_patterns_active[3]:
+		bool_array[2] = rs < curr_data.season.heat_wave_weight * 99
+		curr_data.weather_pattern_counter[2] += 1
+	else:
+		bool_array[2] = rs < curr_data.season.heat_wave_weight
+		curr_data.weather_pattern_counter[2] += 1
+			
+	if prev_data.weather_patterns_active[3] && not prev_data.weather_patterns_active[2]:
+		bool_array[3] = dt < curr_data.season.heat_wave_weight * 99
+		curr_data.weather_pattern_counter[3] += 1
+	else:
+		bool_array[3] = dt < curr_data.season.heat_wave_weight
+		curr_data.weather_pattern_counter[3] += 1
+						
+	curr_data.weather_pattern_counter = [0,0,0,0]
 	return [false, false, false, false]
 	
 ##This method calls time.increment_time(), which can be refactored out if possible
@@ -126,6 +166,10 @@ func initialize_forecast() -> void:
 	full_forecast.resize(forecast_count+1)
 	for i in range(forecast_count+1):
 		full_forecast[i] = set_weather_data()
+		if i > 0:
+			set_weather_pattern_data(full_forecast[i], full_forecast[i-1] )
+		else:
+			set_weather_pattern_data(full_forecast[i])
 		time.increment_time()
 
 ##This method calls time.increment_time(), which can be refactored out if possible

@@ -6,7 +6,9 @@ var temperature : int
 var humidity : int
 var cloud_cover : int
 
+var season : Season
 var weather_patterns_active = [false, false, false, false]
+var weather_pattern_counter = [0, 0, 0, 0]
  
 func get_temperature_as_string() -> String:
 	return str(temperature) + "\u00B0F"

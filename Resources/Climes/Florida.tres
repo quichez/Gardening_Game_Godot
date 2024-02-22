@@ -12,7 +12,7 @@ heat_waves = false
 cold_snaps = false
 rain_storms = false
 droughts = true
-heat_wave_weight = null
+heat_wave_weight = 1
 cold_snap_weight = null
 
 [sub_resource type="Resource" id="Resource_mfyk7"]
