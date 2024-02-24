@@ -18,6 +18,7 @@ var heat_wave_active : bool
 var cold_snap_active : bool
 var rain_storm_active : bool
 var drought_active : bool
+var curr_weather_pattern = [0,0,0,0]
 
 #Forecast System
 var full_forecast : Array[WeatherData]
@@ -30,7 +31,6 @@ func set_current_weather() -> void:
 	temperature = full_forecast[0].temperature
 	humidity = full_forecast[0].humidity
 	season = full_forecast[0].season
-	
 	weather_updated.emit(temperature, humidity, season.season_name)
 
 #Pending Removal/Rework
@@ -115,51 +115,61 @@ func set_weather_data() -> WeatherData:
 	
 	return weather_data
 	
-func set_weather_pattern_data(curr_data : WeatherData, prev_data : WeatherData = null) -> Array[bool]:
+func set_weather_pattern_data(curr_data : WeatherData, prev_data : WeatherData = null) -> void:
 	var hw : float = rng.randf()
 	var cs : float = rng.randf()
 	var rs : float = rng.randf()
 	var dt : float = rng.randf()
-	var bool_array = [false,false,false,false]
+	var bool_array : Array[bool]= [false,false,false,false]
 	
 	if not prev_data:
-		return [false,false,false,false]
+		return
 		
-	if prev_data.weather_patterns_active[0] && not prev_data.weather_patterns_active[1]:
-		bool_array[0] = hw < curr_data.season.heat_wave_weight * 99
+	if prev_data.weather_patterns_active[0]:
+		bool_array[0] = hw < curr_data.season.get_chance_to_occur(curr_data.season.heat_wave_weight,0.01*curr_weather_pattern[0])
 	else:
-		bool_array[0] = hw < curr_data.season.heat_wave_weight
+		bool_array[0] = hw < curr_data.season.get_chance_to_occur(curr_data.season.heat_wave_weight)
 	if bool_array[0]:
-		curr_data.weather_pattern_counter[0] += 1
+		curr_weather_pattern[0] += 1
 	else:
-		curr_data.weather_pattern_counter[0] = 0
+		curr_weather_pattern[0] = 0
 		
-	if prev_data.weather_patterns_active[1] && not prev_data.weather_patterns_active[0]:
-		bool_array[1] = cs < curr_data.season.heat_wave_weight * 99
+	if prev_data.weather_patterns_active[1]:
+		bool_array[1] = cs < curr_data.season.get_chance_to_occur(curr_data.season.cold_snap_weight,200.0/(curr_data.weather_pattern_counter[1]*10)) \
+		&& curr_data.season.cold_snaps
 	else:
-		bool_array[1] = cs < curr_data.season.heat_wave_weight
+		bool_array[1] = cs < curr_data.season.get_chance_to_occur(curr_data.season.cold_snap_weight) \
+		&& curr_data.season.cold_snaps
 	if bool_array[1]:
 		curr_data.weather_pattern_counter[1] += 1
 	else:
 		curr_data.weather_pattern_counter[1] = 0
 		
-	if prev_data.weather_patterns_active[2] && not prev_data.weather_patterns_active[3]:
-		bool_array[2] = rs < curr_data.season.heat_wave_weight * 99
+	if prev_data.weather_patterns_active[2]:
+		bool_array[2] = rs < curr_data.season.get_chance_to_occur(curr_data.season.rain_storm_weight,200.0/(curr_data.weather_pattern_counter[2]*10)) \
+		&& curr_data.season.rain_storms
+	else:
+		bool_array[2] = rs < curr_data.season.get_chance_to_occur(curr_data.season.rain_storm_weight)\
+		 && curr_data.season.rain_storms
+	if bool_array[2]:
 		curr_data.weather_pattern_counter[2] += 1
 	else:
-		bool_array[2] = rs < curr_data.season.heat_wave_weight
-		curr_data.weather_pattern_counter[2] += 1
+		curr_data.weather_pattern_counter[2] = 0
 			
-	if prev_data.weather_patterns_active[3] && not prev_data.weather_patterns_active[2]:
-		bool_array[3] = dt < curr_data.season.heat_wave_weight * 99
-		curr_data.weather_pattern_counter[3] += 1
+	if prev_data.weather_patterns_active[3]:
+		bool_array[3] = dt < curr_data.season.get_chance_to_occur(curr_data.season.drought_weight,200.0/(curr_data.weather_pattern_counter[3]*10)) \
+		&& curr_data.season.droughts
 	else:
-		bool_array[3] = dt < curr_data.season.heat_wave_weight
+		bool_array[3] = dt < curr_data.season.get_chance_to_occur(curr_data.season.drought_weight) \
+		&& curr_data.season.droughts
+	if bool_array[3]:
 		curr_data.weather_pattern_counter[3] += 1
-						
-	curr_data.weather_pattern_counter = [0,0,0,0]
-	return [false, false, false, false]
-	
+	else:	
+		curr_data.weather_pattern_counter[3] += 1
+
+	curr_data.weather_patterns_active = bool_array
+	curr_data.weather_pattern_counter = curr_weather_pattern
+		
 ##This method calls time.increment_time(), which can be refactored out if possible
 func initialize_forecast() -> void:
 	var forecast_count = 14 * 24 * (60 / time.increments_in_minutes)
@@ -176,12 +186,20 @@ func initialize_forecast() -> void:
 func increment_forecast() -> void:
 	full_forecast.remove_at(0)
 	full_forecast.append(set_weather_data())
+	set_weather_pattern_data(full_forecast[-1],full_forecast[-2])
 	time.increment_time()
 	pass
 
 func get_forecast_estimate(forecast: Array[WeatherData]) -> Array[WeatherData]:
-	var forecast_estimate : Array[WeatherData] = forecast
+	var forecast_estimate : Array[WeatherData] = []
+	
+	
+	forecast_estimate.resize(forecast.size())
 	for i in forecast.size():
-		forecast_estimate[i].weather_patterns_active[0] = true
+		if forecast[i].season.heat_waves:
+			var max_guess = forecast[i].season.get_chance_to_occur(forecast[i].season.heat_wave_weight)
+			#var guess_hw = clampf(rng.randf,0.0,forecast[i].season.get_chance_to_occur(\
+				forecast[i].season.heat_wave_weight))
+			forecast_estimate[i].weather_patterns_active[0] = true
 		
 	return forecast_estimate

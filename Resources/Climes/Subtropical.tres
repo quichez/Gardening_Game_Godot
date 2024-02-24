@@ -8,12 +8,14 @@ script = ExtResource("2_1pl20")
 season_name = "Dry Season"
 daily_temperature_range = Vector2(70, 80)
 daily_humidity_range = Vector2(50, 70)
-heat_waves = false
+heat_waves = true
 cold_snaps = false
 rain_storms = false
 droughts = true
-heat_wave_weight = 0
-cold_snap_weight = 0
+heat_wave_weight = 30.0
+cold_snap_weight = 0.0
+rain_storm_weight = 0.0
+drought_weight = 50.0
 
 [sub_resource type="Resource" id="Resource_vr1sk"]
 script = ExtResource("2_1pl20")
@@ -24,8 +26,10 @@ heat_waves = true
 cold_snaps = false
 rain_storms = true
 droughts = false
-heat_wave_weight = 0
-cold_snap_weight = 0
+heat_wave_weight = 0.5
+cold_snap_weight = 0.0
+rain_storm_weight = 0.5
+drought_weight = 0.0
 
 [resource]
 script = ExtResource("1_v737x")

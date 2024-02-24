@@ -82,7 +82,7 @@ func get_forecast(full_forecast : Array[WeatherData],update_counter: bool) -> Ar
 	return current_forecast	
 	
 func set_forecast(full_forecast: Array[WeatherData], forecast_count: int, interval: int) -> Array[WeatherData]:
-	var forecast : Array[WeatherData]
+	var forecast : Array[WeatherData] = []
 	forecast.resize(forecast_count)
 	for i in forecast_count:
 		forecast[i] = full_forecast[(i+1)*interval]

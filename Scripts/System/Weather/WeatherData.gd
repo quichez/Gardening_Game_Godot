@@ -14,7 +14,7 @@ func get_temperature_as_string() -> String:
 	return str(temperature) + "\u00B0F"
 	
 func get_temperature_in_celcius() -> int:
-	return (temperature - 32) * 5 / 9
+	return (temperature - 32) * int(5.0 / 9.0)
 	
 func get_temperature_in_kelvin() -> int:
 	return get_temperature_in_celcius() + 273
