@@ -12,7 +12,8 @@ heat_waves = false
 cold_snaps = false
 rain_storms = false
 droughts = true
-daily_chance_to_occur = 0.05
+heat_wave_weight = 1
+cold_snap_weight = null
 
 [sub_resource type="Resource" id="Resource_mfyk7"]
 script = ExtResource("2_i3o7k")
@@ -23,7 +24,8 @@ heat_waves = false
 cold_snaps = false
 rain_storms = true
 droughts = false
-daily_chance_to_occur = 0.3
+heat_wave_weight = null
+cold_snap_weight = null
 
 [sub_resource type="Resource" id="Resource_bl7tm"]
 script = ExtResource("2_i3o7k")
@@ -34,7 +36,8 @@ heat_waves = true
 cold_snaps = false
 rain_storms = true
 droughts = false
-daily_chance_to_occur = 0.15
+heat_wave_weight = null
+cold_snap_weight = null
 
 [sub_resource type="Resource" id="Resource_2ltu2"]
 script = ExtResource("2_i3o7k")
@@ -45,10 +48,11 @@ heat_waves = false
 cold_snaps = false
 rain_storms = true
 droughts = false
-daily_chance_to_occur = 0.05
+heat_wave_weight = null
+cold_snap_weight = null
 
 [resource]
 script = ExtResource("1_belk0")
 climate_name = "[b]Florida[/b]"
 seasons = Array[ExtResource("2_i3o7k")]([SubResource("Resource_i74rm"), SubResource("Resource_mfyk7"), SubResource("Resource_bl7tm"), SubResource("Resource_2ltu2")])
-info_file = "Florida.txt"
+info_file = "res://Resources/Climes/info/Florida.txt"

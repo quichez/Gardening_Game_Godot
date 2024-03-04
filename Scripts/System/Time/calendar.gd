@@ -11,25 +11,24 @@ extends Node
 
 @onready var timer: Timer = $Timer
 
-signal date_updated(date : String)
+signal current_date_updated(date : String)
 signal weather_update
 
 var date : Date = Date.new()
+var current_date : Date = Date.new()
 	
 func initialize_time() -> void:
 	date.set_date_with_ints(start_day, start_month, start_year)
+	current_date.set_date(date)
+	
 	timer.autostart = true
 	timer.wait_time = length_of_day / (4.0*24.0)
 
-	date_updated.emit(date.get_date_as_string(date_with_day_first))
+	current_date_updated.emit(current_date.get_date_as_string(date_with_day_first))
 	
 func set_current_time(_date: Date) -> void:
-	date = _date
-	date_updated.emit(date.get_date_as_string(date_with_day_first))
+	current_date.set_date(_date)
+	current_date_updated.emit(current_date.get_date_as_string(date_with_day_first))
 
 func increment_time() -> void:
 	date.increment(increments_in_minutes)
-	print(date.get_date_as_string(false))
-
-func get_date() -> Date:
-	return date

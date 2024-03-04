@@ -6,6 +6,7 @@ var test : int
 
 signal toggle_inventory
 signal toggle_climate_info
+signal toggle_forecast_panel
 signal cash_updated(cash: Cash)
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -13,6 +14,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		toggle_inventory.emit()
 	if Input.is_action_just_pressed("climate_info"):
 		toggle_climate_info.emit()
+	if Input.is_action_just_pressed("forecast"):
+		toggle_forecast_panel.emit()
 
 func add_to_cash(amount: int) -> void:
 	cash.amount += amount

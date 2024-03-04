@@ -12,10 +12,11 @@ heat_waves = true
 cold_snaps = true
 rain_storms = false
 droughts = false
-daily_chance_to_occur = 0.15
+heat_wave_weight = 0
+cold_snap_weight = 0
 
 [resource]
 script = ExtResource("1_0wiwo")
 climate_name = "Antarctic"
 seasons = Array[ExtResource("2_v8058")]([SubResource("Resource_e5c3i")])
-info_file = "Antarctica.txt"
+info_file = "res://Resources/Climes/info/Antarctica.txt"
