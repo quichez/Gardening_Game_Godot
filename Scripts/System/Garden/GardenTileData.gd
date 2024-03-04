@@ -1,6 +1,7 @@
 class_name GardenTileData
 
 var age : float
+var moisture : float
 
 #Soil Nutrients - NPK
 var nitrogen : float

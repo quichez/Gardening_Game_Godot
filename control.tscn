@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cngjnct58po34"]
+[gd_scene load_steps=15 format=3 uid="uid://cngjnct58po34"]
 
 [ext_resource type="PackedScene" uid="uid://br3bkhotiotwq" path="res://inventory.tscn" id="1_sgwn6"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xxk6x"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://djlxx7enaq0is" path="res://climate_information.tscn" id="9_8gqh4"]
 [ext_resource type="PackedScene" uid="uid://cc02hlf1gmmjw" path="res://forecast_panel.tscn" id="10_x78xh"]
 [ext_resource type="Resource" uid="uid://y5m3ftmcqwix" path="res://Resources/Climes/Subtropical.tres" id="12_ku26d"]
+[ext_resource type="PackedScene" uid="uid://cscvcpm2uysfr" path="res://Scripts/System/Garden/garden.tscn" id="14_kdc34"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xxk6x")
@@ -94,3 +95,5 @@ start_month = 3
 start_year = 2000
 
 [node name="Timer" type="Timer" parent="Time"]
+
+[node name="Garden" parent="." instance=ExtResource("14_kdc34")]
