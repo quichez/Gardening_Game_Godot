@@ -199,7 +199,7 @@ func get_forecast_estimate(forecast: Array[WeatherData]) -> Array[WeatherData]:
 		if forecast[i].season.heat_waves:
 			var max_guess = forecast[i].season.get_chance_to_occur(forecast[i].season.heat_wave_weight)
 			#var guess_hw = clampf(rng.randf,0.0,forecast[i].season.get_chance_to_occur(\
-				forecast[i].season.heat_wave_weight))
+				#forecast[i].season.heat_wave_weight))
 			forecast_estimate[i].weather_patterns_active[0] = true
 		
 	return forecast_estimate
