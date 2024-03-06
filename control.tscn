@@ -87,7 +87,7 @@ selected_climate = ExtResource("12_ku26d")
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource("9_7xnte")
-length_of_day = 20
+length_of_day = 240
 increments_in_minutes = 15
 date_with_day_first = false
 start_day = 1
@@ -97,3 +97,6 @@ start_year = 2000
 [node name="Timer" type="Timer" parent="Time"]
 
 [node name="Garden" parent="." instance=ExtResource("14_kdc34")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(314, 206)

@@ -1,6 +1,7 @@
 extends Node2D
 @onready var weather: Node = $Weather
 @onready var time: Node = $Time
+@onready var garden: Node = $Garden
 
 @onready var player = $Player
 @onready var inventory_interface = $UI/InventoryInterface
@@ -30,6 +31,9 @@ func _ready() -> void:
 	player.add_to_cash(0)
 	
 func _increment() -> void:
+	#Update garden tiles (before weather increment?)
+	garden.update_garden_tiles()
+	
 	#Increment weather, set current weather, and set current time.
 	weather.increment_forecast()
 	weather.set_current_weather()

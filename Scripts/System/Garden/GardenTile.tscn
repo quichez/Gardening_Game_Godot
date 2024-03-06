@@ -1,14 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://nyilbda4um2q"]
 
 [ext_resource type="Script" path="res://Scripts/System/Garden/garden_tile.gd" id="1_ib8ce"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n0uui"]
-width = 64
-height = 64
+[ext_resource type="Texture2D" uid="uid://clsxfnnqb46u" path="res://Sprites/soil_tile.png" id="2_o22sn"]
 
 [node name="GardenTile" type="Node2D"]
 script = ExtResource("1_ib8ce")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(64, 64)
-texture = SubResource("NoiseTexture2D_n0uui")
+texture = ExtResource("2_o22sn")
