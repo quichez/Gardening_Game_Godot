@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var player = $Player
 @onready var inventory_interface = $UI/InventoryInterface
+@onready var camera_2d: Camera2D = $Camera2D
 
 @export_group("Weather System Settings")
 @onready var climate_information: PanelContainer = $UI/ClimateInformation
@@ -17,6 +18,11 @@ func _ready() -> void:
 	initialize_inventory_interface()
 	initialize_climate_information()
 	initialize_forecast_panel()
+	
+	#Initialize Garden Tiles
+	garden.tile_map.on_garden_size_update.connect(update_camera_position)
+	garden.initialize_garden()
+	
 	
 	#Initialize time and weather in appropriate order
 	time.initialize_time()
@@ -73,3 +79,6 @@ func toggle_climate_info_interface() -> void:
 
 func toggle_forecast_panel() -> void:
 	forecast_panel.visible = not forecast_panel.visible
+
+func update_camera_position() -> void:
+	camera_2d.position = garden.get_camera_offset()

@@ -115,6 +115,7 @@ func set_weather_data() -> WeatherData:
 	
 	return weather_data
 	
+#I hate this one
 func set_weather_pattern_data(curr_data : WeatherData, prev_data : WeatherData = null) -> void:
 	var hw : float = rng.randf()
 	var cs : float = rng.randf()
