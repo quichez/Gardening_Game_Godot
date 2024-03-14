@@ -46,7 +46,6 @@ func update_tile_moisture_with_chance(humidity: float, rain_storm : bool) -> voi
 
 func change_moisture(amount : float) -> void:
 	moisture = clampf(moisture + amount, 0.0, 1.0)
-	print(moisture)
 
 func water_tile(watering_strength : Constants.WateringStrength) -> void:
 	pass
