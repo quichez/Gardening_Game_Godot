@@ -87,7 +87,7 @@ selected_climate = ExtResource("12_ku26d")
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource("9_7xnte")
-length_of_day = 240
+length_of_day = 24
 increments_in_minutes = 15
 date_with_day_first = false
 start_day = 1

@@ -9,6 +9,9 @@
 texture = ExtResource("2_q15l8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_re5nd"]
 texture = ExtResource("3_pjiv1")
@@ -29,5 +32,8 @@ y_dim = 10
 tile_set = SubResource("TileSet_53jyr")
 rendering_quadrant_size = 64
 format = 2
-layer_1/tile_data = PackedInt32Array()
+layer_0/name = "BottomLayer"
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, 65535, 0, 0, 0, 0, 0, -65536, 0, 0)
+layer_1/name = "Selection"
+layer_1/tile_data = PackedInt32Array(-1, 1, 0, 65535, 1, 0)
 script = ExtResource("4_0coer")

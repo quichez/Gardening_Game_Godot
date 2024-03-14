@@ -8,6 +8,7 @@ const GARDEN_TILE = preload("res://Scripts/System/Garden/GardenTile.tscn")
 @export_range(1,100) var y_dim : int
 
 var tile_dict = {}
+var dims : Vector2i = Vector2i(x_dim,y_dim)
 	
 func initialize_garden() -> void:
 	tile_dict = tile_map.initialize_grid(Vector2i(x_dim,y_dim))
@@ -20,10 +21,14 @@ func populate_garden_grid() -> void:
 	pass
 
 func update_garden_tiles() -> void:
-	pass
-	#for garden_tile in grid_container.get_children():
-	#	garden_tile.update_tile_moisture_with_chance(weather.humidity, weather.rain_storm_active)
+	for garden_tile in tile_dict:
+		tile_dict[garden_tile].update_tile_moisture_with_chance(weather.humidity, weather.rain_storm_active)
+		tile_map.update_garden_tile_map(tile_dict[garden_tile])
 
 func add_row_to_garden() -> void:
 	y_dim += 1
-	tile_map.add_row_to_tile_map(Vector2i(x_dim,y_dim))
+	tile_map.add_row_to_tile_map(dims)
+
+func add_column_to_garden() -> void:
+	x_dim += 1
+	tile_map.add_column_to_tile_map(dims)
