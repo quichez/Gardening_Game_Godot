@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cngjnct58po34"]
+[gd_scene load_steps=16 format=3 uid="uid://cngjnct58po34"]
 
 [ext_resource type="PackedScene" uid="uid://br3bkhotiotwq" path="res://inventory.tscn" id="1_sgwn6"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xxk6x"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Time/calendar.gd" id="9_7xnte"]
 [ext_resource type="PackedScene" uid="uid://djlxx7enaq0is" path="res://climate_information.tscn" id="9_8gqh4"]
 [ext_resource type="PackedScene" uid="uid://cc02hlf1gmmjw" path="res://forecast_panel.tscn" id="10_x78xh"]
+[ext_resource type="PackedScene" uid="uid://buxatilmele6v" path="res://garden_tile_inspector.tscn" id="11_y7uxk"]
 [ext_resource type="Resource" uid="uid://y5m3ftmcqwix" path="res://Resources/Climes/Subtropical.tres" id="12_ku26d"]
 [ext_resource type="PackedScene" uid="uid://cscvcpm2uysfr" path="res://Scripts/System/Garden/garden.tscn" id="14_kdc34"]
 
@@ -63,7 +64,6 @@ anchor_right = 0.987
 offset_right = 14.96
 
 [node name="ClimateInformation" parent="UI" instance=ExtResource("9_8gqh4")]
-visible = false
 anchors_preset = -1
 anchor_left = 0.734
 anchor_top = 0.047
@@ -75,11 +75,16 @@ offset_right = 0.52002
 offset_bottom = -3.05176e-05
 
 [node name="ForecastPanel" parent="UI" instance=ExtResource("10_x78xh")]
-visible = false
 offset_left = 918.0
 offset_top = 48.0
 offset_right = 917.36
 offset_bottom = 56.08
+
+[node name="GardenTileInspector" parent="UI" instance=ExtResource("11_y7uxk")]
+offset_left = 1413.0
+offset_top = 370.0
+offset_right = -307.0
+offset_bottom = -410.0
 
 [node name="Weather" type="Node" parent="."]
 script = ExtResource("8_8q4hh")
@@ -99,4 +104,5 @@ start_year = 2000
 [node name="Garden" parent="." instance=ExtResource("14_kdc34")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(314, 206)
+visible = false
+position = Vector2(960, 539)

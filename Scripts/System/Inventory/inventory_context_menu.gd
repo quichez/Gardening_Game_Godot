@@ -39,7 +39,8 @@ func set_context_menu_data(inventory_data: InventoryData, slot_index: int) -> vo
 	if inventory_data.slot_datas[index].item_data.sellable:
 		sell.disabled = false
 		
-func _on_area_2d_mouse_exited() -> void:	
+func _on_area_2d_mouse_exited() -> void:
+	print("out")
 	hide()
 
 func on_click_extract_button() -> void:

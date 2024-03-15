@@ -1,7 +1,11 @@
 extends TileMap
 
-signal on_garden_size_update
+
+
 var GridSize : Vector2i
+
+signal on_garden_size_update
+
 func initialize_grid(dimensions : Vector2i) -> Dictionary:
 	var dic = {}
 	GridSize = dimensions
@@ -36,11 +40,13 @@ func update_garden_tile_moisture(tile_data : GardenTileData) -> void:
 		set_cell(0,Vector2i(tile_data.x_pos, tile_data.y_pos),0,Vector2i(1,1))
 	pass
 
-func get_tile(tile_dict: Dictionary) -> void:
+func get_tile(tile_dict: Dictionary) -> GardenTileData:
 	var tile = local_to_map(get_global_mouse_position())
 	for x in GridSize.x:
 		for y in GridSize.y:
 			erase_cell(1,Vector2i(x,y))
-			
+	
 	if tile_dict.has(str(tile)):
 		set_cell(1,Vector2i(tile.x,tile.y),1,Vector2i(0,0),0)
+		return tile_dict[str(tile)]
+	return null

@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://buxatilmele6v"]
+
+[ext_resource type="Script" path="res://Scripts/System/UI/garden_tile_inspector.gd" id="1_qxaqt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge8jc"]
+bg_color = Color(0.407843, 0.352941, 0.298039, 1)
+
+[node name="GardenTileInspector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1720.0
+offset_bottom = -780.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_qxaqt")
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ge8jc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Basic" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Position" type="Label" parent="Panel/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Tile (x,y)"
+
+[node name="Moisture" type="Label" parent="Panel/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Moisture: "
+
+[node name="Age" type="Label" parent="Panel/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Age: "
+
+[node name="Nutrients" type="VBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Nitrogen" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Phosphorus" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Potassium" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Magnesium" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Calcium" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Sulfur" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Copper" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Manganese" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Iron" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Molybdenum" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Zinc" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Chlorine" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
+
+[node name="Boron" type="Label" parent="Panel/VBoxContainer/Nutrients"]
+layout_mode = 2
+text = "Nutrient
+"
